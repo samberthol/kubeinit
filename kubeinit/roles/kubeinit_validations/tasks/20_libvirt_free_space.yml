@@ -19,28 +19,28 @@
 # Make sure the mount path of libvirt has enough space in the hypervisor
 #
 
-- name: Get libvirt directory free space
-  shell: |
-    set -o pipefail
-    df -BG --output=avail {{ kubeinit_validations_libvirt_path }} | grep -v Avail
-  register: kubeinit_validations_libvirt_free_space
-  changed_when: "kubeinit_validations_libvirt_free_space.rc == 0"
-  tags:
-    - provision_libvirt
-
-- name: Get total inventory disk usage
-  set_fact:
-    kubeinit_validations_libvirt_disk_usage: "{{ kubeinit_validations_libvirt_disk_usage|default(0)|int + hostvars[item].disk[:-1]|int }}"
-  with_items:
-    - "{{ groups['all'] | map('regex_search','^((?!hypervisor).)*$') | select('string') | list }}"
-  tags:
-    - provision_libvirt
-
-- name: Make sure there is enough free space
-  assert:
-    that:
-      - kubeinit_validations_libvirt_free_space.stdout[:-1]|int > kubeinit_validations_libvirt_disk_usage|float * 1.1
-    msg: "It seems there is not enough disk space (Required: {{ kubeinit_validations_libvirt_disk_usage|float * 1.1 }} Total: {{ kubeinit_validations_libvirt_free_space.stdout[:-1]|int }})"
-
-  tags:
-    - provision_libvirt
+#- name: Get libvirt directory free space
+#  shell: |
+#    set -o pipefail
+#    df -BG --output=avail {{ kubeinit_validations_libvirt_path }} | grep -v Avail
+#  register: kubeinit_validations_libvirt_free_space
+#  changed_when: "kubeinit_validations_libvirt_free_space.rc == 0"
+#  tags:
+#    - provision_libvirt
+#
+#- name: Get total inventory disk usage
+#  set_fact:
+#    kubeinit_validations_libvirt_disk_usage: "{{ kubeinit_validations_libvirt_disk_usage|default(0)|int + hostvars[item].disk[:-1]|int }}"
+#  with_items:
+#    - "{{ groups['all'] | map('regex_search','^((?!hypervisor).)*$') | select('string') | list }}"
+#  tags:
+#    - provision_libvirt
+#
+#- name: Make sure there is enough free space
+#  assert:
+#    that:
+#      - kubeinit_validations_libvirt_free_space.stdout[:-1]|int > kubeinit_validations_libvirt_disk_usage|float * 1.1
+#    msg: "It seems there is not enough disk space (Required: {{ kubeinit_validations_libvirt_disk_usage|float * 1.1 }} Total: {{ kubeinit_validations_libvirt_free_space.stdout[:-1]|int }})"
+#
+#  tags:
+#    - provision_libvirt
