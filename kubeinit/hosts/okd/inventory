@@ -15,8 +15,8 @@ kubeinit_inventory_network_bridge=kimgtbr0
 # external network variables
 kubeinit_inventory_network_bridge_external=kiextbr0
 kubeinit_inventory_network_bridge_external_dev=eth1
-kubeinit_inventory_network_bridge_external_ip=10.19.41.157
-kubeinit_inventory_network_bridge_external_gateway=10.19.41.254
+kubeinit_inventory_network_bridge_external_ip=192.168.0.40
+kubeinit_inventory_network_bridge_external_gateway=192.168.0.1
 kubeinit_inventory_network_bridge_external_netmask=255.255.255.0
 kubeinit_inventory_network_bridge_external_mac=52:54:00:6a:39:ad
 
@@ -28,12 +28,12 @@ kubeinit_inventory_cluster_domain=kubeinit.local
 kubeinit_inventory_cluster_service_cidr=172.30.0.0/16
 
 [okd_master_nodes:vars]
-ansible_ssh_common_args='-o StrictHostKeyChecking="no" -o ProxyCommand="ssh -W %h:%p root@nyctea"'
+ansible_ssh_common_args='-o StrictHostKeyChecking="no" -o ProxyCommand="ssh -W %h:%p root@nuc"'
 os=coreos
 disk=25G
-ram=25165824
-vcpus=8
-maxvcpus=16
+ram=4194304
+vcpus=2
+maxvcpus=4
 prefix=24
 netmask=255.255.255.0
 gateway=10.0.0.254
@@ -41,12 +41,12 @@ devicename=enp6s0
 root_device=/dev/vda
 
 [okd_worker_nodes:vars]
-ansible_ssh_common_args='-o StrictHostKeyChecking="no" -o ProxyCommand="ssh -W %h:%p root@nyctea"'
+ansible_ssh_common_args='-o StrictHostKeyChecking="no" -o ProxyCommand="ssh -W %h:%p root@nuc"'
 os=coreos
 disk=30G
-ram=8388608
-vcpus=8
-maxvcpus=16
+ram=2097152
+vcpus=2
+maxvcpus=4
 prefix=24
 netmask=255.255.255.0
 gateway=10.0.0.254
@@ -54,12 +54,12 @@ devicename=enp6s0
 root_device=/dev/vda
 
 [okd_service_nodes:vars]
-ansible_ssh_common_args='-o StrictHostKeyChecking="no" -o ProxyCommand="ssh -W %h:%p root@nyctea"'
+ansible_ssh_common_args='-o StrictHostKeyChecking="no" -o ProxyCommand="ssh -W %h:%p root@nuc"'
 os=centos
-disk=150G
-ram=12582912
-vcpus=8
-maxvcpus=16
+disk=70G
+ram=4194304
+vcpus=4
+maxvcpus=4
 prefix=24
 netmask=255.255.255.0
 gateway=10.0.0.254
@@ -67,12 +67,12 @@ devicename=eth0
 root_device=/dev/sda1
 
 [okd_bootstrap_nodes:vars]
-ansible_ssh_common_args='-o StrictHostKeyChecking="no" -o ProxyCommand="ssh -W %h:%p root@nyctea"'
+ansible_ssh_common_args='-o StrictHostKeyChecking="no" -o ProxyCommand="ssh -W %h:%p root@nuc"'
 os=coreos
 disk=20G
-ram=16777216
-vcpus=8
-maxvcpus=16
+ram=2097152
+vcpus=4
+maxvcpus=4
 prefix=24
 netmask=255.255.255.0
 gateway=10.0.0.254
