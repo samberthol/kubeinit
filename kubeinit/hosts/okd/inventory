@@ -56,7 +56,7 @@ root_device=/dev/vda
 [okd_service_nodes:vars]
 ansible_ssh_common_args='-o StrictHostKeyChecking="no" -o ProxyCommand="ssh -W %h:%p root@nuc"'
 os=centos
-disk=70G
+disk=150G
 ram=4194304
 vcpus=4
 maxvcpus=4
