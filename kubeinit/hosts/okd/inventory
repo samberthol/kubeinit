@@ -83,7 +83,7 @@ root_device=/dev/vda
 # Hosts definitions
 #
 [hypervisor_nodes]
-hypervisor-01 ansible_host=nyctea ansible_ssh_common_args='-o StrictHostKeyChecking="no"'
+hypervisor-01 ansible_host=nuc ansible_ssh_common_args='-o StrictHostKeyChecking="no"'
 
 # Only use an odd number configuration, this means
 # enabling only 1, 3, or 5 master nodes at a time.
