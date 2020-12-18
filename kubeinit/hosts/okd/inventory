@@ -31,8 +31,8 @@ kubeinit_inventory_cluster_service_cidr=172.30.0.0/16
 ansible_ssh_common_args='-o StrictHostKeyChecking="no" -o ProxyCommand="ssh -W %h:%p root@nuc"'
 os=coreos
 disk=25G
-ram=4194304
-vcpus=2
+ram=25165824
+vcpus=4
 maxvcpus=4
 prefix=24
 netmask=255.255.255.0
@@ -44,7 +44,7 @@ root_device=/dev/vda
 ansible_ssh_common_args='-o StrictHostKeyChecking="no" -o ProxyCommand="ssh -W %h:%p root@nuc"'
 os=coreos
 disk=30G
-ram=2097152
+ram=8388608
 vcpus=2
 maxvcpus=4
 prefix=24
@@ -58,7 +58,7 @@ ansible_ssh_common_args='-o StrictHostKeyChecking="no" -o ProxyCommand="ssh -W %
 os=centos
 disk=150G
 ram=4194304
-vcpus=4
+vcpus=2
 maxvcpus=4
 prefix=24
 netmask=255.255.255.0
@@ -69,8 +69,8 @@ root_device=/dev/sda1
 [okd_bootstrap_nodes:vars]
 ansible_ssh_common_args='-o StrictHostKeyChecking="no" -o ProxyCommand="ssh -W %h:%p root@nuc"'
 os=coreos
-disk=20G
-ram=2097152
+disk=30G
+ram=8388608
 vcpus=4
 maxvcpus=4
 prefix=24
@@ -89,8 +89,8 @@ hypervisor-01 ansible_host=nuc ansible_ssh_common_args='-o StrictHostKeyChecking
 # enabling only 1, 3, or 5 master nodes at a time.
 [okd_master_nodes]
 okd-master-01 ansible_host=10.0.0.1 mac=52:54:00:34:84:26
-okd-master-02 ansible_host=10.0.0.2 mac=52:54:00:53:75:61
-okd-master-03 ansible_host=10.0.0.3 mac=52:54:00:96:67:20
+#okd-master-02 ansible_host=10.0.0.2 mac=52:54:00:53:75:61
+#okd-master-03 ansible_host=10.0.0.3 mac=52:54:00:96:67:20
 # okd-master-04 ansible_host=10.0.0.4 mac=52:54:00:60:38:79
 # okd-master-05 ansible_host=10.0.0.5 mac=52:54:00:62:48:94
 
