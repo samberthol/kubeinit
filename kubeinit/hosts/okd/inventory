@@ -31,7 +31,7 @@ kubeinit_inventory_cluster_service_cidr=172.30.0.0/16
 ansible_ssh_common_args='-o StrictHostKeyChecking="no" -o ProxyCommand="ssh -W %h:%p root@nuc"'
 os=coreos
 disk=25G
-ram=25165824
+ram=16777216
 vcpus=4
 maxvcpus=4
 prefix=24
