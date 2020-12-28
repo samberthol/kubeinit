@@ -139,11 +139,12 @@ kubeinit_libvirt_cluster_nets:
      template: cluster-net.xml.j2, type: internal, main: True, enabled: True}
 
 # EXTERNAL NETWORK CONFIG
-kubeinit_libvirt_external_service_interface_enabled: false
+kubeinit_libvirt_external_service_interface_enabled: False
 kubeinit_libvirt_external_service_interface:
   # This will attach the eth1 interfate to the bridge kiextbr0
   # you MUST have the kiextbr0 bridge created and with the
   # physical connection slaved first
+
   attached: "{{ kubeinit_inventory_network_bridge_external }}"
   dev: "{{ kubeinit_inventory_network_bridge_external_dev }}"
   ip: "{{ kubeinit_inventory_network_bridge_external_ip }}"
