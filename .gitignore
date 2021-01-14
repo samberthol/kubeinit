@@ -143,3 +143,4 @@ dmypy.json
 kubeinit/releases*
 
 scenario_variables.yml
+.sbkeys
